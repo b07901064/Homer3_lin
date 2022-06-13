@@ -6,6 +6,10 @@ clc;
 [snirf_saved, snirf_loaded, nirs] = snirf_load_save('/Users/bettylin2727/Downloads/AtlasViewer/Group/DataTree/AcquiredData/Snirf/Examples/neuro_run01.nirs');
 
 %% Remove bad channels according SCI
+sci = get_SCI(snirf_loaded.data);
+disp (sci);
+disp(snirf_loaded.data.measurementList.sourceIndex);
+disp(snirf_loaded.data.measurementList.detectorIndex);
 
 raw_intensity = snirf_loaded.data.dataTimeSeries;
 time= snirf_loaded.data.time;
@@ -48,4 +52,4 @@ data_bp = hmrR_BandpassFilt(dod_MA_corrected, 0.5, 0.01);
 dc = hmrR_OD2Conc( data_bp, snirf_loaded.probe, 1 );
 
 %% Reduce extracerebral component with short channels
-print('');
+printf('');
