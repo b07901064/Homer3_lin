@@ -6,10 +6,11 @@ clc;
 [snirf_saved, snirf_loaded, nirs] = snirf_load_save('/Users/bettylin2727/Downloads/AtlasViewer/Group/DataTree/AcquiredData/Snirf/Examples/neuro_run01.nirs');
 
 %% Remove bad channels according SCI
-sci = get_SCI(snirf_loaded.data);
+nb_channels = size(snirf_loaded.data.measurementList,2)/2;
+sci = get_SCI(snirf_loaded.data, nb_channels);
 disp (sci);
-disp(snirf_loaded.data.measurementList.sourceIndex);
-disp(snirf_loaded.data.measurementList.detectorIndex);
+disp(snirf_loaded.data.measurementList(1).sourceIndex);
+disp(snirf_loaded.data.measurementList(1).detectorIndex);
 
 raw_intensity = snirf_loaded.data.dataTimeSeries;
 time= snirf_loaded.data.time;
